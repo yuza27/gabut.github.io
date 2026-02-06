@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .dancing-script {
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .animate-slide-in-scale {
+            animation: slideInScale 0.6s ease-out;
+        }
+        
+        .animate-delay-300 {
+            animation-delay: 0.3s;
+        }
+        
+        .animate-delay-600 {
+            animation-delay: 0.6s;
+        }
+        
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+        
+        @keyframes wiggle {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(-5deg);
+            }
+            75% {
+                transform: rotate(5deg);
+            }
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .animate-slide-in-scale {
+            animation: slideInScale 0.6s ease-out;
+        }
+        
+        .animate-floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        .animate-wiggle {
+            animation: wiggle 2s ease-in-out infinite;
+        }
+        
+        .animate-heartbeat {
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        
+        .animate-delay-200 {
+            animation-delay: 0.2s;
+        }
+        
+        .animate-delay-400 {
+            animation-delay: 0.4s;
+        }
+        
+        .animate-delay-600 {
+            animation-delay: 0.6s;
+        }
+        
+        .animate-delay-800 {
+            animation-delay: 0.8s;
+        }
+        
+        .animate-delay-1000 {
+            animation-delay: 1s;
+        }
+    </style>
+</head>
+<body class="bg-white min-h-screen flex flex-col items-center justify-center py-8 overflow-hidden">
+    <!-- Floating Hearts Background -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute top-16 left-8 text-red-300 text-xl animate-floating" style="animation-delay: 0s;">💕</div>
+        <div class="absolute top-32 right-12 text-red-300 text-lg animate-floating" style="animation-delay: 1.5s;">✨</div>
+        <div class="absolute bottom-40 left-16 text-red-300 text-2xl animate-floating" style="animation-delay: 2s;">🤍</div>
+        <div class="absolute bottom-16 right-20 text-red-300 text-lg animate-floating" style="animation-delay: 0.7s;">💕</div>
+        <div class="absolute top-64 left-1/4 text-red-300 text-sm animate-floating" style="animation-delay: 2.8s;">✨</div>
+        <div class="absolute top-96 right-1/3 text-red-300 text-xl animate-floating" style="animation-delay: 1.2s;">🤍</div>
+        <div class="absolute top-48 left-1/2 text-red-300 text-sm animate-floating" style="animation-delay: 3.5s;">💕</div>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="backgroundMusic" loop>
+        <source src="assets/hbd.mpeg" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Music Control Button -->
+    <div class="fixed top-6 right-6 z-50 animate-fade-in-up animate-delay-1000">
+        <button 
+            id="musicToggle"
+            class="bg-black text-white p-3 rounded-full hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-110"
+            onclick="toggleMusic()"
+        >
+            <span id="musicIcon">🎵</span>
+        </button>
+    </div>
+
+    <div class="text-center px-6 max-w-md mx-auto relative z-10">
+        <!-- Container Foto dengan Topi -->
+        <div class="relative mb-8 inline-block animate-fade-in-up">
+            <!-- Topi Ulang Tahun -->
+            <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 z-10 animate-wiggle">
+                <img 
+                    src="assets/hat.png" 
+                    alt="Birthday Hat" 
+                    class="w-16 h-16 object-contain"
+                    onerror="this.style.display='none'"
+                >
+            </div>
+            
+            <!-- Foto Pacar -->
+            <div class="w-48 h-48 mx-auto rounded-full overflow-hidden shadow-lg border-4 border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                <img 
+                    src="image/cayang.jpeg" 
+                    alt="Foto Sayang" 
+                    class="w-full h-full object-cover"
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full bg-gray-200 flex items-center justify-center text-gray-500\'>Foto</div>'"
+                >
+            </div>
+        </div>
+        
+        <!-- Ucapan Utama -->
+        <h1 class="text-5xl md:text-6xl dancing-script font-bold text-black mb-6 leading-tight animate-fade-in-up animate-delay-300">
+            Happy valentine Bubub ❤️
+        </h1>
+        
+        <!-- Kata-kata Manis -->
+        <div class="space-y-3 mb-8 animate-fade-in-up animate-delay-300">
+            <p class="text-lg text-gray-700 font-light leading-relaxed">
+                Aku sangat senang banget bisa bersama bubub I love you bubub ✨
+            </p>
+            <p class="text-lg text-gray-700 font-light leading-relaxed">
+                Terima kasih sudah hadir di hidupku 💕
+            </p>
+            <p class="text-lg text-gray-700 font-light leading-relaxed">
+                Semoga hari ini penuh kebahagiaan dan tahun depan membawa hal-hal indah untuk kita berdua 🌟
+            </p>
+        </div>
+        
+        <!-- Tombol Kembali -->
+        <button 
+            onclick="redirectWithEffect()"
+            class="bg-black text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 animate-fade-in-up animate-delay-600"
+        >
+            Balik Lagi 😍
+        </button>
+    </div>
+
+    <script>
+        let isPlaying = false;
+        const audio = document.getElementById('backgroundMusic');
+        const musicIcon = document.getElementById('musicIcon');
+
+        // Check if music was playing from previous page
+        if (localStorage.getItem('musicPlaying') === 'true') {
+            setTimeout(() => {
+                toggleMusic();
+            }, 500);
+        }
+
+        function toggleMusic() {
+            if (isPlaying) {
+                audio.pause();
+                musicIcon.textContent = '🔇';
+                isPlaying = false;
+                localStorage.setItem('musicPlaying', 'false');
+            } else {
+                audio.play().catch(function(error) {
+                    console.log('Audio play failed:', error);
+                });
+                musicIcon.textContent = '🎵';
+                isPlaying = true;
+                localStorage.setItem('musicPlaying', 'true');
+            }
+        }
+
+        // Auto play when page loads (with user interaction)
+        document.addEventListener('click', function() {
+            if (!isPlaying && localStorage.getItem('musicPlaying') !== 'false') {
+                toggleMusic();
+            }
+        }, { once: true });
+
+        // Smooth redirect with fade effect
+        function redirectWithEffect() {
+            document.body.style.transition = 'opacity 0.5s ease-out';
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 500);
+        }
+
+        // Auto play when page loads (with user interaction)
+        document.addEventListener('click', function() {
+            if (!isPlaying && localStorage.getItem('musicPlaying') !== 'false') {
+                toggleMusic();
+            }
+        }, { once: true });
+
+        // Smooth redirect with fade effect
+        function redirectWithEffect() {
+            document.body.style.transition = 'opacity 0.5s ease-out';
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 500);
+        }
+
+        // Page load animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+    </script>
+</body>
+</html>
